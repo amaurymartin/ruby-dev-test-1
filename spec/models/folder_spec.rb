@@ -21,8 +21,19 @@ RSpec.describe Folder, type: :model do
 
       subject { build(:folder, path: nil) }
       it 'return false' do
-        byebug
         expect(subject.valid?).to eq false
+      end
+    end
+  end
+
+  describe 'parent and children' do
+    context 'with subject as parent' do
+      subject { create(:folder) }
+      let(:child) { create(:folder, parent: subject) }
+
+      it 'should be able to do parent tree' do
+        expect(subject.children).to include(child)
+        expect(child.parent).to eq subject
       end
     end
   end
