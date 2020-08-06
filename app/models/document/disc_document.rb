@@ -1,0 +1,2 @@
+class DiscDocument < Document
+end
