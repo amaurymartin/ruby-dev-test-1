@@ -1,0 +1,2 @@
+class BlobDocument < Document
+end
